@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF Explorable Model</title>
+<meta name="description" content="Turn the cut-away building, focus one layer, pick a moment of a session, or run one task through the improvement loop.">
+<link rel="stylesheet" href="./art/tokens.css">
+<link rel="stylesheet" href="./explore.css">
+<script type="importmap">
+{
+ "imports": {
+  "three": "./vendor/three/three.module.js",
+  "three/addons/": "./vendor/three/addons/"
+ }
+}
+</script>
+</head>
+<body>
+<canvas id="stage" tabindex="0" role="img"
+  aria-label="Cut-away work building. The steel frame and the ground-floor plant room are the core; each upper floor is one topic workspace; an orange pipe carries lessons from each floor's wrap-up hopper to the floor, the pool annex, or through a valve into the plant room. Drag or use the arrow keys to turn it, plus and minus to zoom, zero to reset."></canvas>
+<svg id="leaders" aria-hidden="true"></svg>
+<div id="callouts" aria-hidden="true"></div>
+
+<main id="panel">
+  <header class="head">
+    <p class="kicker">Interactive model</p>
+    <h1>Pick any moment of work and see which piece of the system steps in.</h1>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Ways to explore">
+    <button role="tab" id="tab-layer" aria-controls="pane-layer" aria-selected="true">Layer</button>
+    <button role="tab" id="tab-moment" aria-controls="pane-moment" aria-selected="false" tabindex="-1">Moment</button>
+    <button role="tab" id="tab-run" aria-controls="pane-run" aria-selected="false" tabindex="-1">Run one task</button>
+  </div>
+
+  <section role="tabpanel" id="pane-layer" aria-labelledby="tab-layer" class="pane">
+    <div class="opts" id="layer-opts" role="radiogroup" aria-label="Layer"></div>
+    <p class="body" id="layer-text"></p>
+  </section>
+
+  <section role="tabpanel" id="pane-moment" aria-labelledby="tab-moment" class="pane" hidden>
+    <div class="chips" id="moment-opts" role="radiogroup" aria-label="Moment of a session"></div>
+    <p class="name" id="moment-name"></p>
+    <p class="body" id="moment-text"></p>
+  </section>
+
+  <section role="tabpanel" id="pane-run" aria-labelledby="tab-run" class="pane" hidden>
+    <div class="runbar">
+      <button id="play" class="primary" aria-describedby="run-hint">Run one task</button>
+      <input id="scrub" type="range" min="0" max="1000" step="1" value="0" aria-label="Position in the task">
+    </div>
+    <p class="name" id="run-name"></p>
+    <p class="body" id="run-text"></p>
+    <p class="hint" id="run-hint">Arrow keys on the slider step from stage to stage.</p>
+  </section>
+
+  <p class="hint view"><button id="reset" class="link">Reset view</button><span>Drag to turn, scroll or pinch to zoom.</span></p>
+  <p id="live" class="sr" aria-live="polite"></p>
+</main>
+
+<script type="module" src="./explore.js"></script>
+</body>
+</html>

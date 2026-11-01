@@ -1,0 +1,332 @@
+:root {
+  font-size: 16px;
+  --pad-x: 5vw;
+  --pad-y: 5vh;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  position: relative;
+}
+#stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  touch-action: none;
+  cursor: grab;
+  outline: none;
+}
+#stage:active {
+  cursor: grabbing;
+}
+#stage:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--ink);
+}
+#leaders {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: visible;
+}
+.callout {
+  position: absolute;
+  width: max-content;
+  max-width: 24rem;
+  background: var(--bg-paper);
+  padding: 0.25rem 0.375rem;
+  pointer-events: none;
+}
+.callout .t {
+  font: 600 1.25rem/1.2 var(--font-body);
+  color: var(--ink);
+}
+.callout .s {
+  font: 400 1.0625rem/1.3 var(--font-body);
+  color: var(--ink-2);
+  margin-top: 0.125rem;
+}
+.callout.accent .t {
+  color: var(--accent-ink);
+}
+.callout .t,
+.callout .s {
+  text-shadow:
+    0 0 2px var(--bg-paper),
+    0 0 4px var(--bg-paper),
+    0 0 6px var(--bg-paper),
+    0 0 6px var(--bg-paper);
+}
+.callout.right {
+  text-align: right;
+}
+.callout.tag .t {
+  font-size: 1.125rem;
+}
+.callout[hidden] {
+  display: none;
+}
+#panel {
+  position: absolute;
+  left: var(--pad-x);
+  top: var(--pad-y);
+  width: min(40rem, 36vw);
+  max-height: calc(100vh - 2 * var(--pad-y));
+}
+.kicker {
+  font: 500 1rem/1 var(--font-mono);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 0 0 1rem;
+}
+h1 {
+  font: var(--fw-headline) 2.75rem/var(--lh-headline) var(--font-display);
+  letter-spacing: -0.016em;
+  color: var(--ink);
+  margin: 0 0 1.75rem;
+  max-width: 36rem;
+}
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 1.25rem;
+}
+.tabs button {
+  font: 600 1.125rem/1 var(--font-body);
+  color: var(--ink-2);
+  background: none;
+  border: 0;
+  padding: 0.75rem 1rem 0.625rem;
+  margin-bottom: -2px;
+  border-bottom: 4px solid transparent;
+  cursor: pointer;
+}
+.tabs button:first-child {
+  padding-left: 0;
+}
+.tabs button[aria-selected=true] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+.pane[hidden] {
+  display: none;
+}
+.opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.125rem;
+}
+.opts button,
+.chips button {
+  font: 500 1rem/1 var(--font-body);
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--ink-line);
+  padding: 0.625rem 0.875rem;
+  cursor: pointer;
+  border-radius: 0;
+}
+.opts button:hover,
+.chips button:hover {
+  border-color: var(--ink);
+}
+.opts button[aria-checked=true],
+.chips button[aria-checked=true] {
+  background: var(--ink);
+  color: var(--bg-paper);
+  border-color: var(--ink);
+}
+.chips {
+  display: grid;
+  grid-template-columns: repeat(9, 2.75rem);
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+}
+.chips button {
+  font: 500 1.0625rem/1 var(--font-mono);
+  padding: 0.625rem 0;
+  text-align: center;
+}
+.name {
+  font: 600 1.25rem/1.25 var(--font-body);
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+.body {
+  font: 400 1.125rem/1.5 var(--font-body);
+  color: var(--ink-2);
+  margin: 0;
+  max-width: 34rem;
+}
+.hint {
+  font: 400 1rem/1.4 var(--font-body);
+  color: var(--ink-2);
+  margin: 1rem 0 0;
+}
+.hint.view {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.sr {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+.runbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.125rem;
+}
+.primary {
+  font: 600 1.0625rem/1 var(--font-body);
+  color: var(--bg-paper);
+  background: var(--ink);
+  border: 0;
+  padding: 0.75rem 1.125rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.link {
+  font: 500 1rem/1.4 var(--font-body);
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+input[type=range] {
+  flex: 1;
+  min-width: 6rem;
+  accent-color: var(--ink);
+  height: 2rem;
+}
+@media (orientation: portrait) {
+  :root {
+    font-size: calc(100vw / 24.375);
+    --model-h: 56vh;
+  }
+  #stage,
+  #leaders {
+    height: calc(var(--model-h) - 2.75rem);
+  }
+  #panel {
+    left: var(--pad-x);
+    right: var(--pad-x);
+    width: auto;
+    top: var(--model-h);
+    bottom: var(--pad-y);
+    max-height: none;
+  }
+  .kicker {
+    display: none;
+  }
+  h1 {
+    font-size: 1.25rem;
+    line-height: 1.12;
+    margin: 0 0 0.5rem;
+    max-width: none;
+  }
+  .tabs {
+    margin-bottom: 0.75rem;
+  }
+  .tabs button {
+    font-size: 1rem;
+    padding: 0.625rem 0.625rem 0.5rem;
+  }
+  .opts {
+    gap: 0.375rem;
+    margin-bottom: 0.75rem;
+  }
+  .opts button {
+    padding: 0.5rem 0.625rem;
+  }
+  .chips {
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0.25rem;
+    margin-bottom: 0.625rem;
+  }
+  .chips button {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+  .name {
+    font-size: 1.0625rem;
+    margin-bottom: 0.25rem;
+  }
+  .body {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .hint {
+    margin-top: 0.5rem;
+  }
+  .hint.view {
+    position: fixed;
+    top: calc(var(--model-h) - 2.25rem);
+    right: var(--pad-x);
+    left: auto;
+    margin: 0;
+  }
+  .hint.view span {
+    display: none;
+  }
+  #run-hint {
+    display: none;
+  }
+  .runbar {
+    margin-bottom: 0.625rem;
+  }
+  .callout {
+    max-width: 14rem;
+  }
+  .callout.chip {
+    left: var(--pad-x);
+    top: calc(var(--model-h) - 2.25rem);
+    max-width: none;
+    border-left: 0.25rem solid var(--ink);
+    padding: 0.25rem 0.5rem;
+  }
+  .callout.chip.accent {
+    border-left-color: var(--accent);
+  }
+  .callout .t {
+    font-size: 1rem;
+  }
+  .callout .s {
+    font-size: 1rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+  }
+}
