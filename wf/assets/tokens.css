@@ -1,0 +1,86 @@
+@import "./vendor/fonts/fonts.css";
+:root {
+  --bg-paper: #E0DDD6;
+  --bg-paper-2: #D6D2C9;
+  --ink: #1B1F24;
+  --ink-2: #3C4249;
+  --ink-line: rgba(27, 31, 36, 0.55);
+  --mat-plaster: #E9E4DA;
+  --mat-concrete: #B5AFA4;
+  --mat-concrete-2:#8F897F;
+  --mat-steel: #36404C;
+  --mat-wood: #A2856A;
+  --mat-paper: #F6F3EC;
+  --mat-glass: #A9BCC6;
+  --mat-section: #2E2A26;
+  --mat-hatch: #8C8174;
+  --mat-facade: #C9C2B6;
+  --zone-1: #DED8CC;
+  --zone-2: #C6BDAD;
+  --zone-3: #ADA290;
+  --tint-0: #F1EEE8;
+  --tint-1: #EDE3D2;
+  --tint-2: #E0E5DA;
+  --tint-3: #DCE1E7;
+  --mat-plant-floor:#CEC9C0;
+  --mat-section-wall:#3B3530;
+  --glow-screen: #BFD9E8;
+  --glow-lamp: #FFE2B8;
+  --light-key: #FFE6CC;
+  --light-fill: #C4D6EC;
+  --light-plant: #FFD7A6;
+  --mat-fabric: #7A5E4C;
+  --accent: #D9502B;
+  --accent-ink: #A6381A;
+  --warn: #8A1C1C;
+  --font-display:
+    "Space Grotesk",
+    "IBM Plex Sans",
+    sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-kr:
+    "IBM Plex Sans KR",
+    "IBM Plex Sans",
+    sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --fs-display: 72px;
+  --fs-headline: 58px;
+  --fs-body: 28px;
+  --fs-callout-title: 28px;
+  --fs-callout: 24px;
+  --fw-headline: 600;
+  --lh-headline: 1.08;
+  --lh-body: 1.35;
+  --tracking-mono: 0.06em;
+  --light-from: upper-left;
+  --light-azimuth: 135deg;
+  --light-elevation: 48deg;
+  --shadow-soft: 0 18px 40px rgba(27, 31, 36, 0.18);
+  --shadow-contact:0 2px 4px rgba(27, 31, 36, 0.25);
+  --frame-w: 1920px;
+  --frame-h: 1080px;
+  --safe-x: 96px;
+  --safe-y: 54px;
+  --cols: 12;
+  --gutter: 24px;
+  --col-w: 120px;
+  --leader-w: 2px;
+  --leader-dot: 7px;
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-move: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 0.35s;
+  --dur-mid: 0.8s;
+  --dur-long: 1.6s;
+  --dur-xlong: 3.2s;
+}
+html,
+body {
+  margin: 0;
+  background: var(--bg-paper);
+  color: var(--ink);
+}
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}

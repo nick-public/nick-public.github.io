@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문서에만 있는 AI workflow는 일하는 순간에 닿지 않는다</title>
+<meta name="description" content="문서로만 쓴 AI workflow는 일하는 순간에 닿지 않는다. 그러니 일이 일어나는 순간(세션 시작 · init · review · wrap-up)에 설치하고, 끝난 일의 교훈이 실제로 반복된 가장 좁은 층으로 돌아가게 한다. Claude Code 안에서 도는 WF(Workflow Core)의 구성은 셋이다: 모든 세션이 갖는 다섯 조각의 core, 그 ">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/package.css">
+</head>
+<body class="kr">
+<nav class="bar" aria-label="Site">
+  <a href="index.html">← WF 해설</a>
+  <span>한국어 요약 · 2026-11-01</span>
+</nav>
+<article class="read">
+<p class="kicker">WF · Workflow Core — 한국어 요약</p>
+<h1>문서에만 있는 AI workflow는 일하는 순간에 닿지 않는다</h1>
+<p class="lead">문서로만 쓴 AI workflow는 일하는 순간에 닿지 않는다. 그러니 일이 일어나는 순간(세션 시작 · init · review · wrap-up)에 설치하고, 끝난 일의 교훈이 실제로 반복된 가장 좁은 층으로 돌아가게 한다. Claude Code 안에서 도는 WF(Workflow Core)의 구성은 셋이다: 모든 세션이 갖는 다섯 조각의 core, 그 위에 주제마다 두는 topic workspace, 끝난 일의 교훈을 그 주제 · pool · core로 되돌리는 loop. 아직 시범 전이라 효과가 아니라 작동 방식과 이유를 말한다.</p>
+<p><strong>문서로만 있는 규칙은 일하는 순간에 비어 있다.</strong> 대화에서 낸 결론은 파일에 쓰지 않으면 사라지고, 판단에 맡긴 sub-agent는 불리지 않으며, 설치하지 않은 규칙은 어느 세션에도 닿지 않는다. 그래서 WF는 층을 "무엇을 적었나"가 아니라 "무엇이 세션에 실리나"로 나눈다.</p>
+<p><strong>모든 층은 같은 골조 위에 서고, 끝난 일은 배관을 타고 아래로 돌아온다.</strong> WF를 벽을 걷어 낸 작업 건물로 그려 보자. core(WF가 skeleton이라 부르는 것)는 모든 층을 꿰는 철골 골조와 1층 기계실이다. 기계실에는 규정판 · 캐비닛 7개 · 부스 4개 · 게이트 · 공구 5개, 곧 core 다섯 조각이 있고, 어느 층도 골조를 고르지 않는다. 위층마다 topic workspace가 하나씩 있고, 설비 샤프트(riser)가 세션이 열릴 때 같은 core를 모든 층에 싣는다. 주황 배관이 loop다. 교훈은 층의 wrap-up 호퍼에서 세 길 가운데 하나로 간다. 호퍼에서 한 갈래가 그 층으로 바로 돌아가고, 나머지는 배관을 타고 내려가 발치에서 다시 갈라진다. 한 길은 공용 창고(pool)로 내려가 다른 층이 다음에 열 때 가져가며, 다른 길은 사용자만 여는 밸브를 지나 기계실로 들어가고 riser가 다음 세션으로 올려 보낸다. 다만 실제 건물과 달리 이 골조는 고정되지 않는다. 층에서 내려보낸 교훈이 사용자의 표시를 거쳐 한 줄씩 골조를 고친다.</p>
+<p><strong>모든 세션은 같은 다섯 조각의 core를 갖는다.</strong> rules document, global skill 7개, global agent 4개, enforcement(settings 권한과 hook), shared tool이다. <strong>agent 호출은 skill의 고정 단계에 묶인다.</strong> 모델 판단에 맡긴 호출은 일어나지 않기 때문이다. <strong>hook과 권한이 순간을 강제한다.</strong> 세션 시작 hook이 re-entry card의 목적 · 현재 · 다음 첫 행동을 보이고, 되돌릴 수 없는 명령과 공개를 넓히는 명령은 확인 창 뒤에 둔다. <strong>세션의 아홉 순간마다 끼어드는 것이 정해져 있다.</strong> 새 주제에는 <code>/wf-project-init</code>, 사람의 판단이 필요하면 <code>/wf-review-page</code>, 세션을 닫을 때는 <code>/wf-project-wrap</code>이다.</p>
+<p><strong>주제마다 topic workspace를 core 위에 둔다.</strong> re-entry card는 덮어쓰고, decision log는 지우지 않고 superseded로 표시하며, boundary table 세 칸(묻지 않고 한다 · 멈추고 묻는다 · 따로 승인)이 agent의 범위를 정한다. <strong>지식은 반복된 가장 좁은 층에만 산다.</strong> 반복된 만큼만 범위를 넓히고, 쓰이지 않으면 묻지 않고 은퇴시킨다. <strong>끝난 일의 교훈이 그 주제 · pool · core 세 갈래로 돌아간다.</strong> wrap-up이 process record를 쓰면 refiner가 교훈을 나눈다. 주제 범위는 그 자리에서 바로 고치고, 다른 주제에도 좋은 skill 개선은 pool로 올라가며, 카테고리 · core 변경은 사용자가 표시한 한 줄로만 들어간다. pool에는 두 주제 이상에서 실제로 쓰인 것만 들어가고, 90일 넘게 쓰이지 않은 skill · agent는 wrap-up에서 은퇴 후보가 된다. <strong>core는 codebase처럼 바뀐다.</strong> canonical source를 고치고, 바꿀 줄을 review page로 승인받은 뒤 installer로 적용한다. 새 global skill · agent는 fresh-session test에서 새 세션의 행동이 바뀌어야 설치가 끝난다. <strong>사람은 실제 파일로 구운 page에서 두 칸 이하만 표시한다.</strong> 예외는 외부 공개 하나로, 공개본 전문을 문단마다 표시한다.</p>
+<p><strong>흔한 반대 둘은 "어디에 실리나"와 "언제 불리나"에서 막힌다.</strong> 긴 <code>CLAUDE.md</code> 하나는 매번 실리지만 실린 글이 순간의 행동은 아니고, force push를 막지 못하며, 범위가 없다. 대가인 작은 파일 여럿은 기계가 굽는 map과 installer가 감당한다. agent가 많으면 비싸다는 반대에는, agent를 규칙으로 제한하고 호출을 skill 단계에 고정한다고 답한다. 다만 판단이 든 결과의 second reader는 아끼지 않는다. 같은 세션의 검토는 같은 오해를 통과시키기 때문이다.</p>
+<p><strong>설계는 아직 시범 전이고, 무엇을 자를지는 스스로의 규칙이 정한다.</strong> 쓸모는 논증이 아니라 쓰임의 기록으로 판정한다. 되돌리기 어려운 결정과 공개본은 여전히 사람에게 간다. 글 머리의 cutaway와 아홉 순간을 다룬 slide에서 아무 순간이나 골라, 어느 조각이 끼어드는지 볼 수 있다.</p>
+</article>
+<footer class="end"><a href="article.html">English article</a><a href="slides/deck.pdf">Slide (PDF)</a></footer>
+</body>
+</html>
