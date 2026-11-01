@@ -2,7 +2,7 @@
 
 Source of https://nick-public.github.io/: explainers on AI-native engineering workflows.
 
-- `wf/`: WF (Workflow Core) explainer. Article (English), Korean summary, slide deck and an interactive 3D model (three.js, runs offline).
+- `wf/`: WF (Workflow Core) explainer. Article (English), Korean summary, slide deck and an interactive 3D model (three.js, runs offline). Narrated videos (English, Korean) are on YouTube and linked from `wf/index.html`.
 
 The pages are static HTML with no build step and no external requests.
 
