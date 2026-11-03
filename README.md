@@ -3,7 +3,7 @@
 Source of https://nick-public.github.io/: explainers on AI-native engineering workflows.
 
 - `wf/`: WF (Workflow Core) explainer. Article (English), Korean summary, slide deck and an interactive 3D model (three.js, runs offline). Narrated videos (English, Korean) are on YouTube and linked from `wf/index.html`.
-- `microgpt-anatomy/`: microGPT anatomy explainer. Article (English), Korean summary, slide deck and an interactive 3D model (three.js, runs offline).
+- `microgpt-anatomy/`: microGPT anatomy explainer. Article (English), Korean summary, slide deck and an interactive 3D model (three.js, runs offline). Narrated videos (English, Korean) are on YouTube and linked from `microgpt-anatomy/index.html`.
 
 Source of the workflow behind them: [nick-public/wf-core](https://github.com/nick-public/wf-core) and [nick-public/publish-studio](https://github.com/nick-public/publish-studio).
 
