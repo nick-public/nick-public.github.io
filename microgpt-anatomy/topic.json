@@ -9,7 +9,7 @@
  "explore": true,
  "video_en": "https://youtu.be/tx1VFs-cC8M",
  "video_ko": "https://youtu.be/0BCp1en2sbI",
- "source_url": "",
+ "source_url": "https://github.com/nick-public/microgpt-npu",
  "readme_name": "microGPT anatomy",
  "fonts": "IBM Plex and Space Grotesk fonts"
 }
