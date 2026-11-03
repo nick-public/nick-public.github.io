@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>microGPT anatomy: one token, all the way down</title>
+<meta name="description" content="Every word an AI chat streams back is chosen one token at a time. This article follows one such token, the letter l in the generated name karilen, backwards from a chat window down to standard cells: through the generation loop, about 200 lines of Python, an integer model, a written spec, SystemVerilog, synthesis and verification.">
+<meta property="og:title" content="Three AI agent teams turned a Python GPT into bit-exact RTL in under twenty hours, and one token can be traced through every layer">
+<meta property="og:description" content="Every word an AI chat streams back is chosen one token at a time. This article follows one such token, the letter l in the generated name karilen, backwards from a chat window down to standard cells: through the generation loop, about 200 lines of Python, an integer model, a written spec, SystemVerilog, synthesis and verification.">
+<meta property="og:image" content="https://nick-public.github.io/microgpt-anatomy/assets/hero-16x9.jpg">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/package.css">
+</head>
+<body>
+<nav class="bar" aria-label="Site">
+  <a href="../">← Notes</a>
+  <span>2026-11-03</span>
+</nav>
+<main class="pk">
+<header>
+  <p class="meta">microGPT anatomy — explainer</p>
+  <h1>Three AI agent teams turned a Python GPT into bit-exact RTL in under twenty hours, and one token can be traced through every layer</h1>
+  <p class="one">Every word an AI chat streams back is chosen one token at a time. This article follows one such token, the letter l in the generated name karilen, backwards from a chat window down to standard cells: through the generation loop, about 200 lines of Python, an integer model, a written spec, SystemVerilog, synthesis and verification.</p>
+</header>
+
+<figure class="hero">
+  <picture>
+    <source media="(max-width: 600px)" srcset="assets/hero-4x5.jpg">
+    <img src="assets/hero-16x9.jpg" width="1920" height="1080" alt="Seven plates from an LLM service down to standard cells, with one token threaded through all of them">
+  </picture>
+</figure>
+
+<h2>Read, explore, present <small>4 formats</small></h2>
+<div class="cards">
+<article class="card"><a class="thumb" href="article.html"><img src="slides/web/s25.jpg" alt="" loading="lazy"></a>
+<div class="in"><span class="fig">Article · English</span><h3>Three AI agent teams turned a Python GPT into bit-exact RTL in under twenty hours, and one token can be traced through every layer</h3>
+<p>About 2,900 words (about 13 minutes to read), with nine figures.</p>
+<div class="links"><a class="btn primary" href="article.html">Read the article</a><a class="btn" href="https://gist.github.com/nick-public/fc4c1af3aff7b07692048ada25b975d6">Markdown (gist)</a></div></div></article>
+<article class="card"><a class="thumb" href="explore/index.html"><img src="assets/explore-first.jpg" alt="" loading="lazy"></a>
+<div class="in"><span class="fig">Interactive 3D model</span><h3>Explorable model</h3>
+<p>Turn the seven-plate stack, pick a plate, and see its real files, its numbers and the agents that made it. Works on a phone.</p>
+<div class="links"><a class="btn primary" href="explore/index.html">Open the 3D model</a></div></div></article>
+<article class="card"><a class="thumb" href="slides/deck.pdf"><img src="slides/web/s35.jpg" alt="" loading="lazy"></a>
+<div class="in"><span class="fig">Slide deck · 43 slides</span><h3>Slides</h3>
+<p>1920×1080, one PDF, plus each slide as an image below.</p>
+<div class="links"><a class="btn primary" href="slides/deck.pdf">PDF<small>7.1 MB</small></a><a class="btn" href="slides/contact.png">All slides at a glance</a></div></div></article>
+<article class="card" lang="ko"><a class="thumb" href="summary-ko.html"><img src="slides/web/s18.jpg" alt="" loading="lazy"></a>
+<div class="in"><span class="fig">Korean summary · 한국어 요약</span><h3 style="font-family:var(--font-kr);word-break:keep-all">AI agent 팀 셋이 Python GPT를 20시간 안에 bit-exact RTL로 옮겼고, 토큰 하나로 그 모든 층을 따라갈 수 있다</h3>
+<p>The same argument in the same order, on one page, in Korean.</p>
+<div class="links"><a class="btn primary" href="summary-ko.html">요약 읽기</a></div></div></article>
+</div>
+
+<h2>Slides <small>43</small></h2>
+<div class="strip">
+<a href="slides/s01.png"><img src="slides/web/s01.jpg" alt="Where does a token come from?" loading="lazy"><span>S01 · Where does a token come from?</span></a>
+<a href="slides/s02.png"><img src="slides/web/s02.jpg" alt="A chat answers one token at a time" loading="lazy"><span>S02 · A chat answers one token at a time</span></a>
+<a href="slides/s03.png"><img src="slides/web/s03.jpg" alt="This name came out of RTL simulation, not a GPU" loading="lazy"><span>S03 · This name came out of RTL simulation, not a GPU</span></a>
+<a href="slides/s04.png"><img src="slides/web/s04.jpg" alt="Behind almost every LLM service is one loop" loading="lazy"><span>S04 · Behind almost every LLM service is one loop</span></a>
+<a href="slides/s05.png"><img src="slides/web/s05.jpg" alt="One turn of the loop yields exactly one token" loading="lazy"><span>S05 · One turn of the loop yields exactly one token</span></a>
+<a href="slides/s06.png"><img src="slides/web/s06.jpg" alt="The same loop runs at 4,192 parameters" loading="lazy"><span>S06 · The same loop runs at 4,192 parameters</span></a>
+<a href="slides/s07.png"><img src="slides/web/s07.jpg" alt="Every new token rereads all weights and the growing cache" loading="lazy"><span>S07 · Every new token rereads all weights and the growing cache</span></a>
+<a href="slides/s08.png"><img src="slides/web/s08.jpg" alt="The reference model is one Python file in float" loading="lazy"><span>S08 · The reference model is one Python file in float</span></a>
+<a href="slides/s09.png"><img src="slides/web/s09.jpg" alt="The whole GPT, training included, is one plain file" loading="lazy"><span>S09 · The whole GPT, training included, is one plain file</span></a>
+<a href="slides/s10.png"><img src="slides/web/s10.jpg" alt="One position costs up to 4,016 multiplications" loading="lazy"><span>S10 · One position costs up to 4,016 multiplications</span></a>
+<a href="slides/s11.png"><img src="slides/web/s11.jpg" alt="Our letter ranked fifth, at 4.1%" loading="lazy"><span>S11 · Our letter ranked fifth, at 4.1%</span></a>
+<a href="slides/s12.png"><img src="slides/web/s12.jpg" alt="Silicon wants integers, so every number became one" loading="lazy"><span>S12 · Silicon wants integers, so every number became one</span></a>
+<a href="slides/s13.png"><img src="slides/web/s13.jpg" alt="Weights became eight-bit, with one scale per row" loading="lazy"><span>S13 · Weights became eight-bit, with one scale per row</span></a>
+<a href="slides/s14.png"><img src="slides/web/s14.jpg" alt="Hard functions became tables of 16 and 192 entries" loading="lazy"><span>S14 · Hard functions became tables of 16 and 192 entries</span></a>
+<a href="slides/s15.png"><img src="slides/web/s15.jpg" alt="Even the dice are integers, so the names can match" loading="lazy"><span>S15 · Even the dice are integers, so the names can match</span></a>
+<a href="slides/s16.png"><img src="slides/web/s16.jpg" alt="Integer math cost almost nothing in accuracy" loading="lazy"><span>S16 · Integer math cost almost nothing in accuracy</span></a>
+<a href="slides/s17.png"><img src="slides/web/s17.jpg" alt="Every one of those choices is written in one spec" loading="lazy"><span>S17 · Every one of those choices is written in one spec</span></a>
+<a href="slides/s18.png"><img src="slides/web/s18.jpg" alt="Each decision row keeps its reason and the rejected option" loading="lazy"><span>S18 · Each decision row keeps its reason and the rejected option</span></a>
+<a href="slides/s19.png"><img src="slides/web/s19.jpg" alt="Twelve spec and golden releases; answered spec questions became new versions" loading="lazy"><span>S19 · Twelve spec and golden releases; answered spec questions became new versions</span></a>
+<a href="slides/s20.png"><img src="slides/web/s20.jpg" alt="The spec became SystemVerilog modules" loading="lazy"><span>S20 · The spec became SystemVerilog modules</span></a>
+<a href="slides/s21.png"><img src="slides/web/s21.jpg" alt="The design team wrote 2,395 lines in 11 files" loading="lazy"><span>S21 · The design team wrote 2,395 lines in 11 files</span></a>
+<a href="slides/s22.png"><img src="slides/web/s22.jpg" alt="Sixteen lanes average 741 cycles per position" loading="lazy"><span>S22 · Sixteen lanes average 741 cycles per position</span></a>
+<a href="slides/s23.png"><img src="slides/web/s23.jpg" alt="Our letter&#x27;s score lands in memory as 41" loading="lazy"><span>S23 · Our letter&#x27;s score lands in memory as 41</span></a>
+<a href="slides/s24.png"><img src="slides/web/s24.jpg" alt="Synthesis turns the RTL into standard cells" loading="lazy"><span>S24 · Synthesis turns the RTL into standard cells</span></a>
+<a href="slides/s25.png"><img src="slides/web/s25.jpg" alt="Only 16% of the logic is multiply lanes" loading="lazy"><span>S25 · Only 16% of the logic is multiply lanes</span></a>
+<a href="slides/s26.png"><img src="slides/web/s26.jpg" alt="Verification checks the design against the spec" loading="lazy"><span>S26 · Verification checks the design against the spec</span></a>
+<a href="slides/s27.png"><img src="slides/web/s27.jpg" alt="Every expected value came from the spec and golden model" loading="lazy"><span>S27 · Every expected value came from the spec and golden model</span></a>
+<a href="slides/s28.png"><img src="slides/web/s28.jpg" alt="Two simulators, over 50,000 reads each, zero mismatches" loading="lazy"><span>S28 · Two simulators, over 50,000 reads each, zero mismatches</span></a>
+<a href="slides/s29.png"><img src="slides/web/s29.jpg" alt="Milestone checks found no RTL bugs; catches came earlier" loading="lazy"><span>S29 · Milestone checks found no RTL bugs; catches came earlier</span></a>
+<a href="slides/s30.png"><img src="slides/web/s30.jpg" alt="Tests caught 49 of 76 deliberately broken designs" loading="lazy"><span>S30 · Tests caught 49 of 76 deliberately broken designs</span></a>
+<a href="slides/s31.png"><img src="slides/web/s31.jpg" alt="Back at the top, RTL and golden names match bit for bit" loading="lazy"><span>S31 · Back at the top, RTL and golden names match bit for bit</span></a>
+<a href="slides/s32.png"><img src="slides/web/s32.jpg" alt="At real scale, moving data limits generation, not multiplying" loading="lazy"><span>S32 · At real scale, moving data limits generation, not multiplying</span></a>
+<a href="slides/s33.png"><img src="slides/web/s33.jpg" alt="Three agent teams and one human built it" loading="lazy"><span>S33 · Three agent teams and one human built it</span></a>
+<a href="slides/s34.png"><img src="slides/web/s34.jpg" alt="65 commits in 22.2 hours, from plan to milestone four" loading="lazy"><span>S34 · 65 commits in 22.2 hours, from plan to milestone four</span></a>
+<a href="slides/s35.png"><img src="slides/web/s35.jpg" alt="Every team&#x27;s day had hours with zero tool calls" loading="lazy"><span>S35 · Every team&#x27;s day had hours with zero tool calls</span></a>
+<a href="slides/s36.png"><img src="slides/web/s36.jpg" alt="None of the human&#x27;s 16 inputs was a design decision" loading="lazy"><span>S36 · None of the human&#x27;s 16 inputs was a design decision</span></a>
+<a href="slides/s37.png"><img src="slides/web/s37.jpg" alt="Setups came early, coordination later, handoffs at the very end" loading="lazy"><span>S37 · Setups came early, coordination later, handoffs at the very end</span></a>
+<a href="slides/s38.png"><img src="slides/web/s38.jpg" alt="Ledgers noted one human intervention; session records show four" loading="lazy"><span>S38 · Ledgers noted one human intervention; session records show four</span></a>
+<a href="slides/s39.png"><img src="slides/web/s39.jpg" alt="25 sub-agents ran; 13 were independent reviews" loading="lazy"><span>S39 · 25 sub-agents ran; 13 were independent reviews</span></a>
+<a href="slides/s40.png"><img src="slides/web/s40.jpg" alt="Reviews found most in the spec; questions came from verification" loading="lazy"><span>S40 · Reviews found most in the spec; questions came from verification</span></a>
+<a href="slides/s41.png"><img src="slides/web/s41.jpg" alt="One run, one model family: observations, not effects" loading="lazy"><span>S41 · One run, one model family: observations, not effects</span></a>
+<a href="slides/s42.png"><img src="slides/web/s42.jpg" alt="One token, seven layers, each in its own language" loading="lazy"><span>S42 · One token, seven layers, each in its own language</span></a>
+<a href="slides/s43.png"><img src="slides/web/s43.jpg" alt="Where does a token come from?" loading="lazy"><span>S43 · Where does a token come from?</span></a>
+</div>
+
+<p class="foot">Made with Claude Code: the text, figures, slides and 3D model were produced by AI agents from the project's own records: code, spec, RTL, test logs and session records, then checked by separate review agents and by the author.<br>
+Third-party: three.js (MIT), IBM Plex and Space Grotesk fonts (SIL Open Font License 1.1); license files sit next to each library.</p>
+</main>
+</body>
+</html>

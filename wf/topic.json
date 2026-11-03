@@ -1,0 +1,15 @@
+{
+ "slug": "wf",
+ "order": 1,
+ "date": "2026-11-01",
+ "label": "WF · Workflow Core",
+ "title": "An AI workflow that lives in documents never reaches the work",
+ "one_line": "An AI workflow written only as documents never reaches the moment of work. Install it instead into the moments where work happens — session start, project init, review, and wrap-up — and let every finished task send its lesson back to the narrowest layer where it actually repeated.",
+ "thumb": "assets/hero-16x9.jpg",
+ "explore": true,
+ "video_en": "https://youtu.be/e6XbvrdJfWc",
+ "video_ko": "https://youtu.be/l8oLoeUu3UU",
+ "source_url": "https://github.com/nick-public/wf-core",
+ "readme_name": "WF (Workflow Core)",
+ "fonts": "IBM Plex and Space Grotesk fonts"
+}

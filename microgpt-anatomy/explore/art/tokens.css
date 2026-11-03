@@ -1,0 +1,65 @@
+@import "../vendor/fonts/fonts.css";
+:root {
+  --bg-paper: #EEECE7;
+  --bg-band: #E4E1DA;
+  --plate-face: #F8F7F3;
+  --ink: #17191C;
+  --ink-2: #3D4148;
+  --ink-3: #5E636B;
+  --rule: rgba(23, 25, 28, 0.28);
+  --layer-service: #3F6489;
+  --layer-loop: #2F6F73;
+  --layer-python: #4D7036;
+  --layer-integer: #7A6516;
+  --layer-spec: #8A5A2E;
+  --layer-rtl: #6A4F8A;
+  --layer-cells: #454C55;
+  --layer-tint: 0.07;
+  --thread: #E2401C;
+  --thread-ink: #B42E10;
+  --human: #1D5FD0;
+  --agent: #6E6A62;
+  --data-neg: #3F6489;
+  --data-pos: #B4541F;
+  --data-zero: #F8F7F3;
+  --font-display:
+    "Space Grotesk",
+    "IBM Plex Sans",
+    sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-kr:
+    "IBM Plex Sans KR",
+    "IBM Plex Sans",
+    sans-serif;
+  --fs-headline: 64px;
+  --fs-axis: 28px;
+  --fs-note: 24px;
+  --fs-kicker: 24px;
+  --lh-headline: 1.04;
+  --tracking-mono: 0.02em;
+  --safe-x: 96px;
+  --safe-y: 54px;
+  --col-left: 520px;
+  --stack-x0: 600px;
+  --stack-x1: 1824px;
+  --stack-y0: 170px;
+  --stack-y1: 936px;
+  --band-y: 968px;
+  --cam-azimuth: -6;
+  --cam-elevation: 34;
+  --plate-w: 28;
+  --plate-d: 5.2;
+  --plate-t: 0.3;
+  --plate-gap: 3.0;
+  --light-ambient: 1.6;
+  --light-key: 2.0;
+  --shadow-strength: 0.38;
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-move: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 0.35s;
+  --dur-mid: 0.8s;
+  --dur-long: 1.6s;
+  --dur-xlong: 3.2s;
+}

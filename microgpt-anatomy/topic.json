@@ -1,0 +1,15 @@
+{
+ "slug": "microgpt-anatomy",
+ "order": 2,
+ "date": "2026-11-03",
+ "label": "microGPT anatomy",
+ "title": "Three AI agent teams turned a Python GPT into bit-exact RTL in under twenty hours, and one token can be traced through every layer",
+ "one_line": "Every word an AI chat streams back is chosen one token at a time. This article follows one such token, the letter l in the generated name karilen, backwards from a chat window down to standard cells: through the generation loop, about 200 lines of Python, an integer model, a written spec, SystemVerilog, synthesis and verification.",
+ "thumb": "assets/hero-16x9.jpg",
+ "explore": true,
+ "video_en": "",
+ "video_ko": "",
+ "source_url": "",
+ "readme_name": "microGPT anatomy",
+ "fonts": "IBM Plex and Space Grotesk fonts"
+}
